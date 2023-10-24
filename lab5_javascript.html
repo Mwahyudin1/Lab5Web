@@ -3,14 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mengenal Javascript</title>
+    <title>Pendaftaran</title>
+
+    <script>
+      function validateForm() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        // Validasi nama
+        if (name.trim() === "") {
+          alert("Nama harus diisi");
+          return false;
+        }
+
+        // Validasi email
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!email.match(emailPattern)) {
+          alert("Email tidak valid");
+          return false;
+        }
+
+        // Validasi password
+        if (password.length < 8) {
+          alert("Password harus terdiri dari setidaknya 8 karakter");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
   </head>
   <body>
-    <h1>Pengenalan Javascript</h1>
-    <h3>Contoh documen.write dan consol.log</h3>
-    <script>
-      document.write("Hello World");
-      console.log("Hello World");
-    </script>
+    <h2>Formulir Pendaftaran</h2>
+    <form onsubmit="return validateForm()">
+      <label for="name">Nama:</label>
+      <input type="text" id="name" name="name" /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" /><br /><br />
+
+      <input type="submit" value="Daftar" />
+    </form>
   </body>
 </html>
